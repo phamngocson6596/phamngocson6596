@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Table</title>
+  <style>
+    /* CSS styles for the table and the buttons */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+    th {
+      text-align: center;
+    }
+    button {
+      margin: 10px;
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Goods</th>
+        <th>Detail 1</th>
+        <th>Detail 2</th>
+        <th>Detail 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Good 1</td>
+        <td>10</td>
+        <td>20</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Good 2</td>
+        <td>5</td>
+        <td>15</td>
+        <td>25</td>
+      </tr>
+      <!-- more rows for the goods -->
+      <tr>
+        <td>Total</td>
+        <td id="total-1"></td>
+        <td id="total-2"></td>
+        <td id="total-3"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <button onclick="printTable()">Print</button>
+          <button onclick="clearTable()">Clear</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    function printTable() {
+      window.print();
+    }
+
+    function clearTable() {
+      document.documentElement.classList.add("dark-mode");
+      var rows = document.getElementsByTagName("tr");
+      for (var i = 1; i < rows.length - 1; i++) {
+        var cells = rows[i].getElementsByTagName("td");
+        for (var j = 1; j < cells.length; j++) {
+          cells[j].innerHTML = "";
+        }
+      }
+      document.getElementById("total-1").innerHTML = "";
+      document.getElementById("total-2").innerHTML = "";
+      document.getElementById("total-3").innerHTML = "";
+    }
+
+    // Calculate the total of each column and display it in the last row
+    var rows = document.getElementsByTagName("tr");
+    var lastRow = rows[rows.length - 1];
+    var cells = lastRow.getElementsByTagName("td");
+    for (var i = 1; i < cells.length; i++)
+    var total1 = 0;
+    var total2 = 0;
+    var total3 = 0;
+    for (var i = 1; i < rows.length - 1; i++) {
+      var cells = rows[i].getElementsByTagName("td");
+      total1 += Number(cells[1].innerHTML);
+      total2 += Number(cells[2].innerHTML);
+      total3 += Number(cells[3].innerHTML);
+    }
+    cells[0].innerHTML = "Total";
+    cells[1].innerHTML = total1;
+    cells[2].innerHTML = total2;
+    cells[3].innerHTML = total3;
+    document.getElementById("total-1").innerHTML = total1;
+    document.getElementById("total-2").innerHTML = total2;
+    document.getElementById("total-3").innerHTML = total3;
+  </script>
+</body>
+</html>

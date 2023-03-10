@@ -1,0 +1,38 @@
+body {
+    background-color: aliceblue;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: blue;
+  }
+
+  p {
+    margin: 30px;
+    
+  }
+
+  #resultLabel {
+    margin: 100px;
+    color: red;
+  }
+  
+  table {
+    font-family: arial, sans-serif;
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 50%;
+    border-radius: 10px;
+    border-style: dashed;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
